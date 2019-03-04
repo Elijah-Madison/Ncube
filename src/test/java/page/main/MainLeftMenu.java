@@ -11,13 +11,8 @@ import java.util.Optional;
 
 public class MainLeftMenu extends MainPage {
 
-    private static WebDriver driver;
     private static final By phonesTvAndElectronic = By.xpath(".//a[contains(@href, 'telefony-tv-i-ehlektronika') and @class='menu-categories__link']");
     private static Map<Enum<MainMenuCategoryEnum>, By> categoriesMap;
-
-    MainLeftMenu(WebDriver driver) {
-        this.driver = driver;
-    }
 
     static {
         categoriesMap = new HashMap<>();

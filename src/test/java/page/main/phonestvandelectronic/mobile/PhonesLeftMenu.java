@@ -10,12 +10,7 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 
 public class PhonesLeftMenu extends PhonesPage{
-    private static WebDriver driver;
     private final static By smartPhone = By.xpath(".//a[ @class='m-cat-l-i-title-link' and text()= 'Смартфоны']");
-
-    PhonesLeftMenu(WebDriver driver){
-        this.driver = driver;
-    }
 
     private static Map<Enum<PhonesLeftMenuCategoryEnum>, By> categoriesMap;
     static {

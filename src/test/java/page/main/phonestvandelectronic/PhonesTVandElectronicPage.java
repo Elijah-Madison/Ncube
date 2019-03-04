@@ -4,10 +4,9 @@ import core.DriverConfig;
 import org.openqa.selenium.WebDriver;
 
 public class PhonesTVandElectronicPage {
+
     public PhonesTVandElectronicPage() {
-        if (driver == null) {
-            driver = DriverConfig.getDriver();
-        }
+        driver = DriverConfig.getDriver();
     }
 
     public PhonesTVandElectronicPage(WebDriver driver) {
@@ -25,7 +24,7 @@ public class PhonesTVandElectronicPage {
     }
 
     public <T> T leftMenuSwitch(final PhonesTVandElectronicMenuCategoryEnum category) {
-        return new PhonesTVandElectronicLeftMenu(driver).selectMenuCategory(driver, category);
+        return new PhonesTVandElectronicLeftMenu().selectMenuCategory(driver, category);
     }
 
 }

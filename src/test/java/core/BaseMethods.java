@@ -32,7 +32,7 @@ public class BaseMethods {
         }
         int index = currentUrl.lastIndexOf("/");
         if (index != -1)
-            currentUrl = new StringBuilder(currentUrl).substring(0, index).toString();
+            currentUrl = currentUrl.substring(0, index).toString();
         driver.get(currentUrl + ";page=" + checkPageNum);
         return true;
     }

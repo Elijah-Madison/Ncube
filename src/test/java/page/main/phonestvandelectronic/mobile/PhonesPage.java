@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import static page.main.GlobalElements.*;
@@ -16,10 +15,8 @@ import static page.main.GlobalElements.*;
 public class PhonesPage {
 
     public PhonesPage() {
-        if (driver == null) {
-            driver = DriverConfig.getDriver();
-            currentUrl = driver.getCurrentUrl();
-        }
+        driver = DriverConfig.getDriver();
+        currentUrl = driver.getCurrentUrl();
     }
 
     public PhonesPage(WebDriver driver) {
@@ -39,51 +36,50 @@ public class PhonesPage {
     }
 
     public void leftMenuSwitch(final PhonesLeftMenuCategoryEnum category) {
-        new PhonesLeftMenu(driver).selectMenuCategory(driver, category);
+        new PhonesLeftMenu().selectMenuCategory(driver, category);
         currentUrl = driver.getCurrentUrl();
     }
 
     public List<Integer> getTopSalesProductsNumPerPage(int setNumOfPageForCheck) {
         int switchPageNum = 2;
-        List<String> productInfo = new ArrayList<>();
+        //List<String> productInfo = new ArrayList<>();
         List<String> prices = new ArrayList<>();
         List<String> productTitles = new ArrayList<>();
         List<Integer> topSalesProductsPerPage = new ArrayList<>();
         while (switchPageNum <= setNumOfPageForCheck) {
             //find all top sales products price and title and add them to lists
-            List<String> pricesAsList = textValues(price);
-            prices.addAll(pricesAsList);
-            List<String> productTitlesAsList = textValues(productTitle);
-            productTitles.addAll(productTitlesAsList);
-            //check that product info such as price and title are paired
-            if(pricesAsList.size() != productTitlesAsList.size()) throw new NullPointerException("Not all products have title or price");
+            List<String> pricesPerPage = getTextValues(price);
+            prices.addAll(pricesPerPage);
+            List<String> productTitlesPerPage = getTextValues(productTitle);
+            productTitles.addAll(productTitlesPerPage);
             //add top sales product per one page
-            topSalesProductsPerPage.add(pricesAsList.size());
+            topSalesProductsPerPage.add(pricesPerPage.size());
             //switch to the next page
             BaseMethods.switchPage(driver, currentUrl, switchPageNum);
             switchPageNum++;
         }
+
         //find all top sales products and add them to overall productInfo list
-        for (int num = 0; num < productTitles.size(); num++) {
+        /*for (int num = 0; num < productTitles.size(); num++) {
             productInfo.add("Наименование продукта: \"" + productTitles.get(num) + "\" | Цена: " + prices.get(num) + "\n");
         }
-        System.out.println(productInfo);
+        System.out.println(productInfo);*/
+
+        //check that product info such as price and title are paired
+        if (prices.size() != productTitles.size())
+            throw new NullPointerException("Not all products have title or price");
         return topSalesProductsPerPage;
     }
 
     //take text value from tags and convert webElement to string in List
-    private List<String> textValues(By recordInfo) {
+    private List<String> getTextValues(By recordInfo) {
         //wait for results products table load
         BaseMethods.getElementWithWaitForVisibility(driver, productsTable, 5);
-        return getValues(e -> e.getText(), recordInfo);
-    }
 
-    private List<String> getValues(Function<WebElement, String> pred, By recordInfo) {
         List<WebElement> elements = driver.findElements(recordInfo);
-        List<String> topSalesProductsInfo = elements.stream()
-                .map(pred)
+        return elements.stream()
+                .map(WebElement::getText)
                 .collect(Collectors.toList());
-        return topSalesProductsInfo;
     }
 
 }
