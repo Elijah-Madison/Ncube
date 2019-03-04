@@ -5,16 +5,16 @@ import org.openqa.selenium.WebDriver;
 
 public class PhonesTVandElectronicPage {
 
-    public PhonesTVandElectronicPage() {
-        driver = DriverConfig.getDriver();
-    }
-
     public PhonesTVandElectronicPage(WebDriver driver) {
         this.driver = driver;
+        currentUrl = driver.getCurrentUrl();
     }
 
+    private DriverConfig driverConfig = new DriverConfig();
+    private String currentUrl;
+
     public void openUrl() {
-        DriverConfig.openPage();
+        driverConfig.openPage();
     }
 
     private WebDriver driver;

@@ -1,25 +1,29 @@
 package page.main;
 
+import core.BaseMethods;
 import core.DriverConfig;
 import org.openqa.selenium.WebDriver;
 
 public class MainPage {
 
-    public MainPage(WebDriver driver) {
-        this.driver = driver;
-    }
-
     public MainPage() {
-        driver = DriverConfig.getDriver();
+        if(driver == null) {
+            driverConfig = new DriverConfig();
+            driver = driverConfig.getDriver();
+            currentUrl = driver.getCurrentUrl();
+        }
     }
 
+    private DriverConfig driverConfig;
+    private BaseMethods baseMethods = new BaseMethods();
     private WebDriver driver;
+    private String currentUrl;
 
     public void openUrl() {
-        DriverConfig.openPage();
+        driverConfig.openPage();
     }
 
-    protected void quitDriver() {
+    public void quitDriver() {
         driver.quit();
     }
 

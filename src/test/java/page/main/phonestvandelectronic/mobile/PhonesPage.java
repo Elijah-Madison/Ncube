@@ -14,21 +14,18 @@ import static page.main.GlobalElements.*;
 
 public class PhonesPage {
 
-    public PhonesPage() {
-        driver = DriverConfig.getDriver();
-        currentUrl = driver.getCurrentUrl();
-    }
-
     public PhonesPage(WebDriver driver) {
         this.driver = driver;
         currentUrl = driver.getCurrentUrl();
     }
 
+    private DriverConfig driverConfig = new DriverConfig();
+    private BaseMethods baseMethods = new BaseMethods();
     private WebDriver driver;
     private String currentUrl;
 
     public void openUrl() {
-        DriverConfig.openPage();
+        driverConfig.openPage();
     }
 
     protected void quitDriver() {
@@ -55,7 +52,7 @@ public class PhonesPage {
             //add top sales product per one page
             topSalesProductsPerPage.add(pricesPerPage.size());
             //switch to the next page
-            BaseMethods.switchPage(driver, currentUrl, switchPageNum);
+            baseMethods.switchPage(driver, currentUrl, switchPageNum);
             switchPageNum++;
         }
 
@@ -74,7 +71,7 @@ public class PhonesPage {
     //take text value from tags and convert webElement to string in List
     private List<String> getTextValues(By recordInfo) {
         //wait for results products table load
-        BaseMethods.getElementWithWaitForVisibility(driver, productsTable, 5);
+        baseMethods.getElementWithWaitForVisibility(driver, productsTable, 5);
 
         List<WebElement> elements = driver.findElements(recordInfo);
         return elements.stream()

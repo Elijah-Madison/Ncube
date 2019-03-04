@@ -9,9 +9,10 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
-public class MainLeftMenu extends MainPage {
+public class MainLeftMenu {
 
     private static final By phonesTvAndElectronic = By.xpath(".//a[contains(@href, 'telefony-tv-i-ehlektronika') and @class='menu-categories__link']");
+    private BaseMethods baseMethods = new BaseMethods();
     private static Map<Enum<MainMenuCategoryEnum>, By> categoriesMap;
 
     static {
@@ -26,7 +27,7 @@ public class MainLeftMenu extends MainPage {
                 .map(Map.Entry::getValue)
                 .findFirst();
         if (menuCat.isPresent()) {
-            BaseMethods.getElementWithWaitForVisibility(driver, menuCat.get(), 5).click();
+            baseMethods.getElementWithWaitForVisibility(driver, menuCat.get(), 5).click();
             return category.getInstance(driver);
         } else {
             throw new NoSuchElementException("There is no such category in left main menu.");

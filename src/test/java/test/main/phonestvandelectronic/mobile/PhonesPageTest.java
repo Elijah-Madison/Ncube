@@ -3,6 +3,7 @@ package test.main.phonestvandelectronic.mobile;
 
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import page.main.MainMenuCategoryEnum;
 import page.main.MainPage;
@@ -15,11 +16,17 @@ import java.util.List;
 import java.util.Optional;
 
 
-public class PhonesPageTest extends PhonesPage {
+public class PhonesPageTest {
+    private MainPage mainPage;
+
+    @BeforeMethod
+    public void setMainPage(){
+        mainPage = new MainPage();
+    }
 
     @AfterMethod
     public void quit() {
-        quitDriver();
+        mainPage.quitDriver();
     }
 
     @Test
@@ -27,7 +34,7 @@ public class PhonesPageTest extends PhonesPage {
         int checkPageNum = 3;
         int topSalesProductMax = 3;
 
-        MainPage mainPage = new MainPage();
+        //MainPage mainPage = new MainPage();
         mainPage.openUrl(); // - зайти на сайт rozetka.com.ua
         PhonesTVandElectronicPage phonesTVandElectronicPage = mainPage.leftMenuSwitch(MainMenuCategoryEnum.PHONE_AND_ELECTRONIC_CAT); //- перейти у розділ “смартфониб тв і електроніка”
         PhonesPage phonesPage = phonesTVandElectronicPage.leftMenuSwitch(PhonesTVandElectronicMenuCategoryEnum.PHONES_CAT);   //- перейти у “Телефоны”

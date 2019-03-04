@@ -13,18 +13,18 @@ import static page.main.GlobalElements.moreGoods;
 
 public class BaseMethods {
 
-    public static WebElement getElementWithWaitForVisibility(WebDriver driver, By xpath, int time) {
+    public WebElement getElementWithWaitForVisibility(WebDriver driver, By xpath, int time) {
         WebDriverWait wait = new WebDriverWait(driver, time);
         return wait.withMessage("Element by path " + xpath + " is not visible").until(ExpectedConditions.visibilityOf(driver.findElement(xpath)));
     }
 
 
-    public static List<WebElement> getAllElementsWithWaitForVisibility(WebDriver driver, By xpath, int time) {
+    public List<WebElement> getAllElementsWithWaitForVisibility(WebDriver driver, By xpath, int time) {
         WebDriverWait wait = new WebDriverWait(driver, time);
         return wait.withMessage("Element by path " + xpath + " is not visible").until(ExpectedConditions.visibilityOfAllElementsLocatedBy(xpath));
     }
 
-    public static boolean switchPage(WebDriver driver, String currentUrl, final int checkPageNum) {
+    public boolean switchPage(WebDriver driver, String currentUrl, final int checkPageNum) {
         try {
             getElementWithWaitForVisibility(driver, moreGoods, 10);
         } catch (NoSuchElementException ignore) {
