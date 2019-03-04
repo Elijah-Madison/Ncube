@@ -1,5 +1,5 @@
-# Auto1
+# Ncube
 # to run tests:
-# go to Auto1\src\test\resources\testng.xml -> right click on file -> run
+# go to Ncube\src\test\resources\testng.xml -> right click on file -> run
 # OR
-# Auto1\src\test\java\test\search.SearchPageTest.java -> run test by test
+# Ncube\src\test\java\test\main\phonestvandelectronic\mobile\PhonesPageTest.java -> run test by test 
