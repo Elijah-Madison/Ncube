@@ -34,7 +34,6 @@ public class PhonesPageTest {
         int checkPageNum = 3;
         int topSalesProductMax = 3;
 
-        //MainPage mainPage = new MainPage();
         mainPage.openUrl(); // - зайти на сайт rozetka.com.ua
         PhonesTVandElectronicPage phonesTVandElectronicPage = mainPage.leftMenuSwitch(MainMenuCategoryEnum.PHONE_AND_ELECTRONIC_CAT); //- перейти у розділ “смартфониб тв і електроніка”
         PhonesPage phonesPage = phonesTVandElectronicPage.leftMenuSwitch(PhonesTVandElectronicMenuCategoryEnum.PHONES_CAT);   //- перейти у “Телефоны”
