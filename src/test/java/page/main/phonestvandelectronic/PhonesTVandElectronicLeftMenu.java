@@ -3,7 +3,6 @@ package page.main.phonestvandelectronic;
 import core.BaseMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import page.main.phonestvandelectronic.mobile.PhonesPage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -17,18 +16,6 @@ public class PhonesTVandElectronicLeftMenu extends PhonesTVandElectronicPage {
     PhonesTVandElectronicLeftMenu(WebDriver driver) {
         this.driver = driver;
     }
-
-    public enum PhonesTVandElectronicMenuCategoryEnum {
-        PHONES_CAT {
-            @Override
-            PhonesPage getInstance() {
-                return new PhonesPage();
-            }
-        };
-
-        abstract <T> T getInstance();
-    }
-
 
     private static Map<Enum<PhonesTVandElectronicMenuCategoryEnum>, By> categoriesMap;
 
@@ -44,8 +31,8 @@ public class PhonesTVandElectronicLeftMenu extends PhonesTVandElectronicPage {
                 .map(Map.Entry::getValue)
                 .findFirst();
         if (menuCat.isPresent()) {
-            BaseMethods.getElementWithWaitForVisibility(driver, phone, 5).click();
-            return category.getInstance();
+            BaseMethods.getElementWithWaitForVisibility(driver, menuCat.get(), 5).click();
+            return category.getInstance(driver);
         } else {
             throw new NoSuchElementException("There is no such category in left menu.");
         }

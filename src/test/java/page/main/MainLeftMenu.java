@@ -3,7 +3,6 @@ package page.main;
 import core.BaseMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import page.main.phonestvandelectronic.PhonesTVandElectronicPage;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,17 +24,6 @@ public class MainLeftMenu extends MainPage {
         categoriesMap.put(MainMenuCategoryEnum.PHONE_AND_ELECTRONIC_CAT, phonesTvAndElectronic);
     }
 
-    public enum MainMenuCategoryEnum {
-        PHONE_AND_ELECTRONIC_CAT {
-            @Override
-            PhonesTVandElectronicPage getInstance() {
-                return new PhonesTVandElectronicPage(driver);
-            }
-        };
-
-        abstract <T> T getInstance();
-    }
-
     public <T> T selectMainLeftMenuCategory(final WebDriver driver, final MainMenuCategoryEnum category) {
         Optional<By> menuCat = categoriesMap.entrySet()
                 .stream()
@@ -43,8 +31,8 @@ public class MainLeftMenu extends MainPage {
                 .map(Map.Entry::getValue)
                 .findFirst();
         if (menuCat.isPresent()) {
-            BaseMethods.getElementWithWaitForVisibility(driver, phonesTvAndElectronic, 5).click();
-            return category.getInstance();
+            BaseMethods.getElementWithWaitForVisibility(driver, menuCat.get(), 5).click();
+            return category.getInstance(driver);
         } else {
             throw new NoSuchElementException("There is no such category in left main menu.");
         }

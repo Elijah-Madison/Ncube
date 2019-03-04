@@ -4,16 +4,16 @@ package test.main.phonestvandelectronic.mobile;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
+import page.main.MainMenuCategoryEnum;
 import page.main.MainPage;
+import page.main.phonestvandelectronic.PhonesTVandElectronicMenuCategoryEnum;
 import page.main.phonestvandelectronic.PhonesTVandElectronicPage;
+import page.main.phonestvandelectronic.mobile.PhonesLeftMenuCategoryEnum;
 import page.main.phonestvandelectronic.mobile.PhonesPage;
 
 import java.util.List;
 import java.util.Optional;
 
-import static page.main.MainLeftMenu.MainMenuCategoryEnum;
-import static page.main.phonestvandelectronic.PhonesTVandElectronicLeftMenu.PhonesTVandElectronicMenuCategoryEnum;
-import static page.main.phonestvandelectronic.mobile.PhonesLeftMenu.PhonesLeftMenuCategoryEnum;
 
 public class PhonesPageTest extends PhonesPage {
 

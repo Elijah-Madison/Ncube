@@ -3,8 +3,6 @@ package page.main;
 import core.DriverConfig;
 import org.openqa.selenium.WebDriver;
 
-import static page.main.MainLeftMenu.MainMenuCategoryEnum;
-
 public class MainPage {
 
     public MainPage() {

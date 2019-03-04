@@ -17,11 +17,6 @@ public class PhonesLeftMenu extends PhonesPage{
         this.driver = driver;
     }
 
-    public enum PhonesLeftMenuCategoryEnum {
-        SMARTPHONE_CAT
-    }
-
-
     private static Map<Enum<PhonesLeftMenuCategoryEnum>, By> categoriesMap;
     static {
         categoriesMap = new HashMap<>();
@@ -35,7 +30,7 @@ public class PhonesLeftMenu extends PhonesPage{
                 .map(Map.Entry::getValue)
                 .findFirst();
         if (menuCat.isPresent()) {
-            BaseMethods.getElementWithWaitForVisibility(driver, smartPhone, 5).click();
+            BaseMethods.getElementWithWaitForVisibility(driver, menuCat.get(), 5).click();
         } else {
             throw new NoSuchElementException("There is no such category in left menu.");
         }

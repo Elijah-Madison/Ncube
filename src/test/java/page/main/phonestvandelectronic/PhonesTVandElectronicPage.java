@@ -2,11 +2,8 @@ package page.main.phonestvandelectronic;
 
 import core.DriverConfig;
 import org.openqa.selenium.WebDriver;
-import page.main.Category;
 
-import static page.main.phonestvandelectronic.PhonesTVandElectronicLeftMenu.PhonesTVandElectronicMenuCategoryEnum;
-
-public class PhonesTVandElectronicPage implements Category {
+public class PhonesTVandElectronicPage {
     public PhonesTVandElectronicPage() {
         if (driver == null) {
             driver = DriverConfig.getDriver();
