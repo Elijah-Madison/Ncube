@@ -38,11 +38,11 @@ public class BaseMethods {
         return true;
     }
 
-    public Object selectLeftMenuCategory(final WebDriver driver, final String category, final Map<?, By> categoriesMap) {
+    public Enum<?> selectLeftMenuCategory(final WebDriver driver, final String category, final Map<? extends Enum, By> categoriesMap) {
         for(Map.Entry<?, By> cat : categoriesMap.entrySet()){
             if(cat.getKey().toString().equals(category)){
                 getElementWithWaitForVisibility(driver, cat.getValue(), 5).click();
-                return cat.getKey();
+                return (Enum) cat.getKey();
             }
         }
         throw new java.util.NoSuchElementException("There is no such category in left menu.");
