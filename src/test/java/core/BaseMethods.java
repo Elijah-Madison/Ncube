@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.Map;
 
 import static page.main.GlobalElements.moreGoods;
 
@@ -35,6 +36,16 @@ public class BaseMethods {
             currentUrl = currentUrl.substring(0, index).toString();
         driver.get(currentUrl + ";page=" + checkPageNum);
         return true;
+    }
+
+    public Object selectLeftMenuCategory(final WebDriver driver, final String category, final Map<?, By> categoriesMap) {
+        for(Map.Entry<?, By> cat : categoriesMap.entrySet()){
+            if(cat.getKey().toString().equals(category)){
+                getElementWithWaitForVisibility(driver, cat.getValue(), 5).click();
+                return cat.getKey();
+            }
+        }
+        throw new java.util.NoSuchElementException("There is no such category in left main menu.");
     }
 
 }

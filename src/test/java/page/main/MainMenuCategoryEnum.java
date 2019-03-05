@@ -9,6 +9,13 @@ public enum MainMenuCategoryEnum {
         PhonesTVandElectronicPage getInstance(WebDriver driver) {
             return new PhonesTVandElectronicPage(driver);
         }
+    },
+    SOMETHING_ELSE_CAT {
+        @Override
+        Object getInstance(WebDriver driver) {
+            return new Object();
+        }
+
     };
 
     abstract <T> T getInstance(WebDriver driver);

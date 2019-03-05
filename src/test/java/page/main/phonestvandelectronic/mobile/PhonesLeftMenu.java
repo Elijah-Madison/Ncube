@@ -11,24 +11,13 @@ import java.util.Optional;
 
 public class PhonesLeftMenu {
     private final static By smartPhone = By.xpath(".//a[ @class='m-cat-l-i-title-link' and text()= 'Смартфоны']");
-    private BaseMethods baseMethods = new BaseMethods();
-
     private static Map<Enum<PhonesLeftMenuCategoryEnum>, By> categoriesMap;
     static {
         categoriesMap = new HashMap<>();
         categoriesMap.put(PhonesLeftMenuCategoryEnum.SMARTPHONE_CAT, smartPhone);
     }
 
-    public void selectMenuCategory(final WebDriver driver, final PhonesLeftMenuCategoryEnum category) {
-        Optional<By> menuCat = categoriesMap.entrySet()
-                .stream()
-                .filter(e -> e.getKey() == category)
-                .map(Map.Entry::getValue)
-                .findFirst();
-        if (menuCat.isPresent()) {
-            baseMethods.getElementWithWaitForVisibility(driver, menuCat.get(), 5).click();
-        } else {
-            throw new NoSuchElementException("There is no such category in left menu.");
-        }
+    public void leftMenuSwitch(final WebDriver driver, final PhonesLeftMenuCategoryEnum category) {
+        new BaseMethods().selectLeftMenuCategory(driver, category.name(), categoriesMap);
     }
 }

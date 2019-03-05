@@ -33,7 +33,7 @@ public class PhonesPage {
     }
 
     public void leftMenuSwitch(final PhonesLeftMenuCategoryEnum category) {
-        new PhonesLeftMenu().selectMenuCategory(driver, category);
+        new PhonesLeftMenu().leftMenuSwitch(driver, category);
         currentUrl = driver.getCurrentUrl();
     }
 

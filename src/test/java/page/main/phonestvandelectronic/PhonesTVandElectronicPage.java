@@ -24,7 +24,7 @@ public class PhonesTVandElectronicPage {
     }
 
     public <T> T leftMenuSwitch(final PhonesTVandElectronicMenuCategoryEnum category) {
-        return new PhonesTVandElectronicLeftMenu().selectMenuCategory(driver, category);
+        return new PhonesTVandElectronicLeftMenu().leftMenuSwitch(driver, category);
     }
 
 }

@@ -28,7 +28,7 @@ public class MainPage {
     }
 
     public <T> T leftMenuSwitch(final MainMenuCategoryEnum category) {
-        return new MainLeftMenu().selectMainLeftMenuCategory(driver, category);
+        return new MainLeftMenu().leftMenuSwitch(driver, category);
     }
 
 
