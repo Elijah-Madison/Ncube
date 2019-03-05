@@ -45,7 +45,7 @@ public class BaseMethods {
                 return cat.getKey();
             }
         }
-        throw new java.util.NoSuchElementException("There is no such category in left main menu.");
+        throw new java.util.NoSuchElementException("There is no such category in left menu.");
     }
 
 }

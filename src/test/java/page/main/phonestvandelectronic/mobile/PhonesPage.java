@@ -39,7 +39,7 @@ public class PhonesPage {
 
     public List<Integer> getTopSalesProductsNumPerPage(int setNumOfPageForCheck) {
         int switchPageNum = 2;
-        //List<String> productInfo = new ArrayList<>();
+        List<String> productInfo = new ArrayList<>();
         List<String> prices = new ArrayList<>();
         List<String> productTitles = new ArrayList<>();
         List<Integer> topSalesProductsPerPage = new ArrayList<>();
@@ -57,10 +57,10 @@ public class PhonesPage {
         }
 
         //find all top sales products and add them to overall productInfo list
-        /*for (int num = 0; num < productTitles.size(); num++) {
+        for (int num = 0; num < productTitles.size(); num++) {
             productInfo.add("Наименование продукта: \"" + productTitles.get(num) + "\" | Цена: " + prices.get(num) + "\n");
         }
-        System.out.println(productInfo);*/
+        System.out.println(productInfo);
 
         //check that product info such as price and title are paired
         if (prices.size() != productTitles.size())
