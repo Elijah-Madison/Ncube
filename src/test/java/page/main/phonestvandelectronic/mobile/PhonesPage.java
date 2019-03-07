@@ -2,6 +2,8 @@ package page.main.phonestvandelectronic.mobile;
 
 import core.BaseMethods;
 import core.DriverConfig;
+import menu.main.phonestvandelectronic.mobile.PhonesLeftMenu;
+import menu.main.phonestvandelectronic.mobile.PhonesLeftMenuCategoryEnum;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static page.main.GlobalElements.*;
+import static core.GlobalElements.*;
 
 public class PhonesPage {
 

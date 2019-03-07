@@ -5,11 +5,11 @@ import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import page.main.MainMenuCategoryEnum;
+import menu.main.MainMenuCategoryEnum;
 import page.main.MainPage;
-import page.main.phonestvandelectronic.PhonesTVandElectronicMenuCategoryEnum;
+import menu.main.phonestvandelectronic.PhonesTVandElectronicMenuCategoryEnum;
 import page.main.phonestvandelectronic.PhonesTVandElectronicPage;
-import page.main.phonestvandelectronic.mobile.PhonesLeftMenuCategoryEnum;
+import menu.main.phonestvandelectronic.mobile.PhonesLeftMenuCategoryEnum;
 import page.main.phonestvandelectronic.mobile.PhonesPage;
 
 import java.util.List;

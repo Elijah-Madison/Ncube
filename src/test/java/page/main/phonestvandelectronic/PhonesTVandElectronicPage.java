@@ -1,6 +1,8 @@
 package page.main.phonestvandelectronic;
 
 import core.DriverConfig;
+import menu.main.phonestvandelectronic.PhonesTVandElectronicLeftMenu;
+import menu.main.phonestvandelectronic.PhonesTVandElectronicMenuCategoryEnum;
 import org.openqa.selenium.WebDriver;
 
 public class PhonesTVandElectronicPage {

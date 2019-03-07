@@ -1,4 +1,4 @@
-package page.main;
+package menu.main;
 
 import core.BaseMethods;
 import org.openqa.selenium.By;
@@ -10,7 +10,7 @@ import java.util.Map;
 public class MainLeftMenu {
 
     private static final By phonesTvAndElectronic = By.xpath(".//a[contains(@href, 'telefony-tv-i-ehlektronika') and @class='menu-categories__link']");
-    private static Map<Enum<MainMenuCategoryEnum>, By> categoriesMap;
+    private static Map<CategoriesMenuEnum, By> categoriesMap;
 
     static {
         categoriesMap = new HashMap<>();

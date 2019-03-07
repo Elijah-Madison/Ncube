@@ -2,6 +2,8 @@ package page.main;
 
 import core.BaseMethods;
 import core.DriverConfig;
+import menu.main.MainLeftMenu;
+import menu.main.MainMenuCategoryEnum;
 import org.openqa.selenium.WebDriver;
 
 public class MainPage {

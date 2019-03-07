@@ -6,17 +6,23 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import menu.main.CategoriesMenuEnum;
 
 import java.util.List;
 import java.util.Map;
 
-import static page.main.GlobalElements.moreGoods;
+import static core.GlobalElements.moreGoods;
 
 public class BaseMethods {
 
     public WebElement getElementWithWaitForVisibility(WebDriver driver, By xpath, int time) {
         WebDriverWait wait = new WebDriverWait(driver, time);
         return wait.withMessage("Element by path " + xpath + " is not visible").until(ExpectedConditions.visibilityOf(driver.findElement(xpath)));
+    }
+
+    public WebElement waitElementToBeClickable(WebDriver driver, By xpath, int time) {
+        WebDriverWait wait = new WebDriverWait(driver, time);
+        return wait.withMessage("Element by path " + xpath + " is not clickable").until(ExpectedConditions.elementToBeClickable(driver.findElement(xpath)));
     }
 
 
@@ -38,11 +44,12 @@ public class BaseMethods {
         return true;
     }
 
-    public Enum<?> selectLeftMenuCategory(final WebDriver driver, final String category, final Map<? extends Enum, By> categoriesMap) {
-        for(Map.Entry<?, By> cat : categoriesMap.entrySet()){
+    public CategoriesMenuEnum selectLeftMenuCategory(final WebDriver driver, final String category, final Map<CategoriesMenuEnum, By> categoriesMap) {
+        for(Map.Entry<CategoriesMenuEnum, By> cat : categoriesMap.entrySet()){
             if(cat.getKey().toString().equals(category)){
-                getElementWithWaitForVisibility(driver, cat.getValue(), 5).click();
-                return (Enum) cat.getKey();
+                getElementWithWaitForVisibility(driver, cat.getValue(), 5);
+                waitElementToBeClickable(driver, cat.getValue(), 5).click();
+                return cat.getKey();
             }
         }
         throw new java.util.NoSuchElementException("There is no such category in left menu.");
